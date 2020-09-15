@@ -1,2 +1,4 @@
 # CSE18R272
-For Collage Purpose
+For College Purpose
+
+JAVA Codes 
