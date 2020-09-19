@@ -1,0 +1,227 @@
+import java.util.*;
+
+class matrix
+{
+	private int[][] mat;
+	int row, column;
+
+	//constructor<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+	matrix()
+	{
+		row=0;
+		column=0;
+	}
+
+	//constructor<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+	matrix(int r, int c)
+	{
+		row = r;
+		column = c;
+		mat = new int[row][column];
+	}
+
+	//function to accept matrix values from user<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+	public void get_input()
+	{
+		Scanner s = new Scanner(System.in);
+		int i=0,j=0;
+		
+		System.out.println("Enter the matrix elements(row-wise)");
+		for (i=0; i < row; i++)
+		{
+			for(j=0; j<column; j++)
+	        {
+				System.out.print("Number " + (j + 1) + ": ");
+				mat[i][j] = s.nextInt();
+			}
+
+		}
+	}
+
+	//function to print matrix <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+	public void print_matrix()
+	{
+		int i = 0, j = 0;
+		System.out.println("The matrix is::)");
+		for (i = 0; i < row; i++)
+		{
+			System.out.println("");
+			for (j = 0; j < column; j++)
+			{
+				System.out.print("   "+mat[i][j]);
+			}
+
+		}
+	}
+
+	//function to add 2 matrices<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+	public matrix add(matrix a)
+	{
+		matrix ans = new matrix(row,column);
+		int i=0,j=0;
+		if (this.row != a.row || this.column != a.column)
+		{
+			System.out.println("Addition is not possible");
+		}
+		else
+		{
+			for (i = 0; i < row; i++)
+			{
+				for (j = 0; j < column; j++)
+				{
+					ans.mat[i][j] = this.mat[i][j] + a.mat[i][j];
+				}
+			}
+		}
+		return ans;
+	}
+
+	//function to subtract 2 matrices<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+	public matrix sub(matrix a)
+	{
+		matrix ans = new matrix(row,column);
+		int i=0,j=0;
+		if (this.row != a.row || this.column != a.column)
+		{
+			System.out.println("Subraction is not possible");
+		}
+		else
+		{
+			for (i = 0; i < row; i++)
+			{
+				for (j = 0; j < column; j++)
+				{
+					ans.mat[i][j] = this.mat[i][j] - a.mat[i][j];
+				}
+			}
+		}
+		return ans;
+	}
+	//function to multiply <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+		public matrix mul(matrix b) {
+        matrix a = this;
+        if (a.column != b.row) throw new RuntimeException("Illegal matrix dimensions.");
+        matrix ans = new matrix(a.column, b.row);
+        for (int i = 0; i < ans.row; i++)
+            for (int j = 0; j < ans.column; j++)
+                for (int k = 0; k < a.column; k++)
+                    ans.mat[i][j] += (a.mat[i][k] * b.mat[k][j]);
+        return ans;
+    }
+
+
+
+    //sum of row <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+		public int roow(matrix b){
+        int sum=0;
+        for(int i = 0; i < b.row; i++){    
+            for(int j = 0; j < b.column; j++){  
+                sum += b.mat[i][j];  
+            }
+            
+            System.out.println("Sum of " + (i+1) +" row: " + sum);
+            
+        sum=0;
+        }
+        return sum;
+        
+    	}
+    	//sum of column <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+	    public int coln(matrix b){
+	        int sum=0;
+	        for(int i = 0; i < b.column; i++){    
+	            for(int j = 0; j < b.row; j++){  
+	                sum += b.mat[j][i];  
+	            }  
+	            System.out.println("Sum of " + (i+1) +" Col: " + sum);
+	        sum=0;
+	        }  
+	        return sum;
+    	}
+		// Trace ie, sum of diagonals<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+		public int trace(matrix b) 
+		{ 
+		 int sum = 0; 
+		 for (int i=0; i<b.row; i++) 
+		  sum +=b.mat[i][i]; 
+		 return sum; 
+		}
+
+/* REMEMBER THE MISTAKE ........................................................................
+
+	public matrix mul(matrix a)
+	{
+		matrix ans = new matrix(row,a.column);
+		int i=0,j=0;
+		if (this.column == a.row)
+			
+		{
+			for (i = 0; i < row; i++)
+			{
+				for (j = 0; j < column; j++)
+					ans.mat[i][j]=0;
+					for(int k=0;k <=this.column;)
+				{
+					ans.mat[i][j]+= this.mat[i][k]*a.mat[k][j];
+				}
+			}
+		}
+		return ans;
+	}
+*/
+
+		}
+//MAIN CLASS MAT_PLUS FOR MAIN CALL<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+class mat_plus
+{
+
+	private static matrix a,b,ans;
+	private static int sum,roow,coln;
+	public static void main(String args[])
+	{
+		int i = 0, j = 0,r=0,c=0;
+		Scanner s = new Scanner(System.in);
+
+		//get the no. of rows and columns of the matrix from the user<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+		System.out.println("Enter no. of rows:");
+		r = s.nextInt();
+		System.out.println("Enter no. of columns:");
+		c = s.nextInt();
+
+		//accept the first matrix<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+		System.out.println("Enter the first matrix::)");
+		a = new matrix(r,c);
+		a.get_input();
+
+		//accept the second matrix<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+		System.out.println("Enter the second matrix::)");
+		b = new matrix(r,c);
+		b.get_input();
+
+		//Add the 2 matrices and print the result<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+		ans = a.add(b);
+		System.out.println("\nAddition of the two matrices is::)");
+		ans.print_matrix();
+
+		//Subtract the 2 matrices and print the result<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+		ans = a.sub(b);
+		System.out.println("\nSubtraction of the two matrices is::)");
+		ans.print_matrix();
+
+		//Multiply the 2 matrices and print the result<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+		ans = a.mul(b);
+		System.out.println("\nMultiplication of the two matrices is::)");
+		ans.print_matrix();
+		
+		//Trace ie sum of diagonals the 2 matrices and print the result<<<<<<<<<<<<<<<<<<<<<<<<<<<
+		sum = a.trace(a);
+		System.out.println("\nTrace of the two matrices is::) "+sum);
+		System.out.println("\n");
+
+		//sum fo row and columns Matrix A<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+		sum = a.roow(a);
+		System.out.println("\n");
+		sum = a.coln(a);
+		System.out.println("\n");
+	}
+}
