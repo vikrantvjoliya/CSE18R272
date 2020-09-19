@@ -1,0 +1,27 @@
+//Find mean and standard deviation
+import java.util.Scanner;
+import java.lang.Math;
+public class Mean {
+    public static void main(String[] args) {
+        int ar[]=new int[5];
+        System.out.println("Enter an integers for 3: ");
+      	Scanner s = new Scanner(System.in);
+		int sum=0,dist=0,mean=0;
+        double yu=0,sd=0;
+        for(int i=0;i<5;i++)
+        {
+        	ar[i]=s.nextInt();
+            sum=sum+ar[i];
+        }
+        mean=sum/5;
+        System.out.println("means is"+ mean);
+        for(int i=0;i<5;i++)
+        {
+        	dist=ar[i]-mean;
+        	yu+=dist*dist;
+        }
+        sd=Math.sqrt((yu/5));
+        System.out.println("Standard Deviation"+sd);
+    }
+    
+}
