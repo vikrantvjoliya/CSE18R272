@@ -1,0 +1,50 @@
+import java.io.*;
+import java.util.Scanner;
+class Subsitution_code{
+	String plain;
+	int key;
+	Subsitution_code(String t){
+		plain=t;
+	}
+	String encrypt(){
+		String alpha="abcedefghijklmnopkrstuvwxyz";
+		/*
+	Index Out Of Error If I am not Using Throw IndexOut Of BoundsException>>>>>>>>>>>>>
+		*/
+		//String sub="abcedefghijklmnopkrstuvwxyz";
+		String sub="klmnhiabkrstejpvwfoucedgxyz";
+		String out="";
+		for(int i=0;i<plain.length();i++){
+			char ch = plain.charAt(i);
+			int p = alpha.indexOf(ch);
+			char c = sub.charAt(p);
+			out=out+c;
+		}
+		return out;
+	}
+	String decrypt(){
+		String sub="abcedefghijklmnopkrstuvwxyz";//logic simple reverse the aplha code for decrypt
+		String alpha="klmnhiabkrstejpvwfoucedgxyz";
+		String in="";
+		for(int i=0;i<plain.length();i++){
+			char ch = plain.charAt(i);
+			int p = alpha.indexOf(ch);
+			char c = sub.charAt(p);
+			in=in+c;
+		}
+		return in;
+
+	}
+
+	public static void main(String[] args)//throws IndexOutOfBoundsException
+	{
+		
+		Subsitution_code y = new Subsitution_code("vikrant");
+		String out = y.encrypt();
+		System.out.println(out);
+		System.out.println("\n");
+		Subsitution_code n = new Subsitution_code(out);
+		String in=n.decrypt();
+		System.out.println(in);
+	}
+}
