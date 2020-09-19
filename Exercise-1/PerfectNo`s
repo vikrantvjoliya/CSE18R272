@@ -1,0 +1,25 @@
+import java.util.Scanner;
+class Perfectno{
+    public static void main(String[] args) {
+        int i, j, end, sum;
+        System.out.println("Enter The Upper limit :): ");
+        Scanner s = new Scanner(System.in);
+        end = s.nextInt();
+		System.out.println("\nAll Perfect numbers between 1 to"+end+" is: ");
+        for(i=1; i<=end; i++)
+    	{
+        	sum = 0;
+			for(j=1; j<i; j++)
+        		{
+            	if(i % j == 0)
+            		{
+                	sum += j;
+            		}
+        		}
+        	if(sum == i)
+        	{
+            	System.out.printf("\n%d\n", i);
+        	}
+    	}
+    }
+}
