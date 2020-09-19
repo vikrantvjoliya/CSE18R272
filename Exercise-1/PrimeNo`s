@@ -1,0 +1,63 @@
+import java.util.Scanner;
+public class Prime_no{
+    
+    public static void main(String[] args){
+        int a,b,tmp=0;
+        System.out.println("Enter a Range Of Integer: ");
+        Scanner s = new Scanner(System.in);
+        a = s.nextInt(); 
+        b = s.nextInt();
+        for(int i=a;i<=b;i++);
+        {
+            tmp=primeno(i);
+            System.out.println(tmp+"OK");
+        }
+        }
+    static int primeno(int x){
+        int a,tmp=0;
+        a=x;
+        for(int i=2;i<=a/2;++i)
+        {
+            if(a%i==0)
+                
+                tmp=1;
+                break;
+        }
+        if(a==1)
+        {System.out.printf("1 is neither a prime nor a composite number.");
+        }
+        else
+        {
+            if(tmp==0)
+                System.out.printf("%d is a prime NO",a);
+            else
+                System.out.printf("%d is not a prime NO",a);
+        }
+    }
+}   //for(int i=o;)
+
+
+
+/* Ma'am Code 
+class Main_9919004368{ 
+    public static void main(String args[]){
+        int a=2,b=1000;
+        for(int i=a;i<=b;i++)
+        {
+            if(prime(i))
+            {
+                System.out.println("PRIME "+i);
+            }
+        }
+        //code
+    }
+    static boolean prime(int x){
+        int a;
+        for(int i=2;i<=x/2;i++)
+            if(x%i==0)
+                return false;
+        return true;
+        
+    } 
+}
+/*
