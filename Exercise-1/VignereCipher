@@ -1,0 +1,76 @@
+import java.io.*;
+import java.util.Scanner;
+class Vignere{
+
+ String plain;
+ String key;
+ public Vignere(String text, String k)
+   {
+    plain = text;
+    key = k;
+     }
+  String encrypt()
+   {
+    String alpha ="abcdefghijklmnopqrstuvwxyz";
+    int num_key[] = new int[key.length()];
+    String out=""; char ch; int shift;
+    for (int i=0; i<key.length(); i++) 
+        num_key[i] = alpha.indexOf(key.charAt(i)) + 1;
+    int j=0;
+     for (int i=0; i<plain.length(); i++)
+    {
+      if ( j < num_key.length)
+         shift= num_key[j++];
+      else {
+         j = 0;
+         shift= num_key[j++];
+         }
+         
+         //System.out.print(shift +" ");
+     ch = (char) ((int) (plain.charAt(i) -97+shift) % 26 +97);
+         
+     out = out + ch;
+    }
+   return out;
+  }
+  String decrypt()
+   {
+    String alpha ="abcdefghijklmnopqrstuvwxyz";
+    int num_key[] = new int[key.length()];
+    String in=""; char ch; int shift;
+    for (int i=0; i<key.length(); i++) 
+        num_key[i] = alpha.indexOf(key.charAt(i)) + 1;
+    int j=0;
+     for (int i=0; i<plain.length(); i++)
+    {
+      if ( j < num_key.length)
+         shift= num_key[j++];
+      else {
+         j = 0;
+         shift= num_key[j++];
+         }
+         
+         //System.out.print(shift +" ");
+     ch = (char) ((int) (plain.charAt(i) -97-shift+26) % 26 +97);// decryption logic
+         //de=(en-key+26)%26 i.e.           -shift+26 here>>>>>>>>>>>>>>>>>>>>>>>>>>  
+     in = in + ch;
+    }
+   return in;
+  }
+ 
+ public static void main(String a[]){
+ 	Scanner s = new Scanner(System.in);
+	System.out.println("Enter shift String ie KEY:\n");
+	String r = s.next();
+	System.out.println("Enter your msg \n");
+	String o=s.next();
+    Vignere c = new Vignere(o, r);
+    String out = c.encrypt();
+    System.out.println("\nEncrpted msg :"+out+"\n");
+
+    Vignere d=new Vignere(out,r);
+    String in=d.decrypt();
+    System.out.println("Decrypted msg :"+in);
+
+ }
+}
