@@ -1,0 +1,92 @@
+// Java program to check Deficient Number 
+  
+import java.io.*; 
+import java.util.Scanner;
+class Deficientno { 
+    // Function to calculate sum of divisors 
+    static int divisorsSum(int n) 
+    { 
+        int sum = 0; // Initialize sum of prime factors 
+  
+        // Note that this loop runs till square root of n 
+        for (int i = 1; i <= (Math.sqrt(n)); i++) { 
+            if (n % i == 0) { 
+                // If divisors are equal, take only one 
+                // of them 
+                if (n / i == i) { 
+                    sum = sum + i; 
+                } 
+                else // Otherwise take both 
+                { 
+                    sum = sum + i; 
+                    sum = sum + (n / i); 
+                } 
+            } 
+        } 
+  
+        return sum; 
+    } 
+  
+    // Function to check Deficient Number 
+    static boolean isDeficient(int n) 
+    { 
+        // Check if sum(n) < 2 * n 
+        return (divisorsSum(n) < (2 * n)); 
+    } 
+  
+    /* Driver program to test above function */
+    public static void main(String args[]) 
+    {   int n;
+        System.out.println("CONVERSION");
+        Scanner v =new Scanner(System.in);
+        n= v.nextInt();
+
+        if (isDeficient(n)) 
+            System.out.println("YES, Its Deficient No"); 
+        else
+            System.out.println("NO, Its NOT Deficient No"); 
+
+    } 
+} 
+  
+// This code is contributed by Vikrant
+
+/*
+import java.io.*;
+import java.util.Scanner;
+class Main_9919004368{ 
+    static int divisorsSum(int n) 
+    { 
+        int sum = 0;
+        for (int i = 1; i <= (Math.sqrt(n)); i++) { 
+            if (n % i == 0) { 
+                if (n / i == i) { 
+                    sum = sum + i; 
+                } 
+                else
+                { 
+                    sum = sum + i; 
+                    sum = sum + (n / i); 
+                } 
+            } 
+        } 
+        return sum; 
+    } 
+    static boolean isDeficient(int n) 
+    { 
+        return (divisorsSum(n) < (2 * n)); 
+    } 
+    public static void main(String args[]) 
+    {   int n;
+        
+        Scanner v =new Scanner(System.in);
+        n= v.nextInt();
+        System.out.println("Wheter th No Entered is Deficient Number or not \n"+n);
+        if (isDeficient(n)) 
+            System.out.println("YES, Its Deficient No\n"+n); 
+        else
+            System.out.println("NO, Its NOT Deficient No\n"+n); 
+
+    } 
+} 
+/*
