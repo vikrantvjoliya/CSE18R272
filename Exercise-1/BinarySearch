@@ -1,0 +1,45 @@
+import java.io.*;
+import java.util.Scanner;
+public class Binary_search{
+	public static void main(String[] args) {
+		int n;
+		System.out.printf("Binary_search Algorithm\n");
+		Scanner v =new Scanner(System.in);
+
+        int first, last, middle, search;
+        int[] array=new int[100];
+        
+        System.out.printf("Enter number of elements\n");
+        n= v.nextInt();
+
+        System.out.printf("Enter %d integers\n", n);
+
+        for (int c = 0; c < n; c++)
+            array[c]=v.nextInt();
+
+        System.out.printf("Enter value to find\n");
+        search=v.nextInt();
+        first = 0;
+        last = n - 1;
+        middle = (first+last)/2;
+
+        while (first <= last) {
+            if (array[middle] < search)
+                first = middle + 1;
+            else if (array[middle] == search) {
+                System.out.printf("%d found at location %d.\n", search, middle+1);
+                break;
+            }
+            else
+                last = middle - 1;
+
+            middle = (first + last)/2;
+        }
+        if (first > last)
+            System.out.printf("Not found! %d isn't present in the list.\n", search);
+
+
+    }
+}
+
+//Converting C into Java by Vikrant...
