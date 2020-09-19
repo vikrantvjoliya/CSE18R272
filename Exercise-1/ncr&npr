@@ -1,0 +1,35 @@
+//Find the nCr and nPr
+import java.util.Scanner;
+class NCR{ 
+    static int myFactorail(int x){
+        int n,fac=1;
+        n=x;
+        for(int i=1;i<=n;i++)
+        {
+            if(i==0)
+                System.out.printf("Factorial is 1");
+            else
+                fac=fac*i;            
+        }
+        return fac;
+    }
+    public static void main(String args[]){
+        int ncr,n,r,temp,npr;
+        System.out.println("Enter N!: ");
+        Scanner s = new Scanner(System.in);
+        n = s.nextInt();
+        System.out.println("Enter R!: ");
+        Scanner t = new Scanner(System.in);
+        r = t.nextInt();
+        temp=n-r;
+        ncr=myFactorail(n)/(myFactorail(r)*myFactorail(temp));
+        System.out.println("\nSo NCR is "+ncr);
+        npr=myFactorail(n)/(myFactorail(temp));
+        System.out.println("\nSo NPR is "+npr);
+        }
+
+}//ncr=n!/(n-r)!x(r)
+//npr=n!/(n-r)!        
+
+
+
