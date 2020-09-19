@@ -1,0 +1,43 @@
+import java.io.*;
+import java.util.*;
+class Xor{
+	String plain;
+	char xkey;
+	Xor(String t,char k){
+		plain=t;
+		xkey=k;
+	}
+	String encrypt(){
+		String out="";char ch;
+		for(int i=0;i<plain.length();i++){
+			ch =(char)((int)plain.charAt(i) ^ (int)xkey);	
+			out=out+ch;
+		}
+		return out;
+	}
+	String decrypt(){
+		String in="";char ch;
+		for(int i=0;i<plain.length();i++){
+			ch =(char)((int)plain.charAt(i) ^ (int)xkey);	
+			in=in+ch;
+		}
+		return in;
+	}
+
+
+	public static void main(String[] args)throws IndexOutOfBoundsException{
+		Scanner s = new Scanner(System.in);
+		System.out.println("Enter XOR char ie any Character KEY:\n");
+		char r = s.next().charAt(0);//remeber theri is no nextChar() here
+		// Instead we have next().charAt(0) 
+		System.out.println("Enter your msg \n");
+		String o=s.next();
+		Xor c=new Xor(o,r);
+		String out=c.encrypt();
+		System.out.println("\nEncrpted msg: "+out+"\n");//logic versimple again apply xor on encrypted strings....
+		Xor d=new Xor(out,r);
+		String in=d.decrypt();
+		System.out.println("Decrypted msg: "+in);
+			
+	}
+}
