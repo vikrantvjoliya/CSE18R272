@@ -1,0 +1,16 @@
+import java.util.Scanner;
+class SUMOFDIG{
+	public static void main(String[] args) {
+		int n,k,sum=0;
+        System.out.println("Enter Number :): ");
+        Scanner s = new Scanner(System.in);
+        n = s.nextInt();
+		while(n>0)
+		{
+			k=n%10;
+			sum+=k;
+			n/=10;
+		}
+		System.out.println("Sum Of the Digits is "+sum);	
+	}
+}
