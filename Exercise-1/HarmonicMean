@@ -1,0 +1,17 @@
+public class harmonic {
+    public static void main(String args[]){
+        int harmonic = 50000;
+        double L2R=0, R2L=0;
+        for(int i=1; i<=harmonic; i++){
+            L2R += (double)(1)/i;
+            R2L += (double)(1)/(harmonic-i+1);
+        }
+        double difference = R2L-L2R;
+
+        System.out.println("harmonic(n)=1+1/2+1/3+......1/n");
+
+        System.out.println("left to right = " + L2R);
+        System.out.println("right to left = " + R2L);
+        System.out.println("difference is " + difference);
+    }
+}
