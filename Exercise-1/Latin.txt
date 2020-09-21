@@ -1,0 +1,58 @@
+import java.io.*;
+import java.util.*;
+
+class Latin{
+	String plain;
+	int key;
+	Latin(String t){
+		plain=t;
+		//key=k;
+	}
+	String encrypt(){
+		String alpha="abcdefghijklmnopkrstuvwxyz";
+		String out="";
+		for(int i=0;i<plain.length();i++){
+			char ch=(plain.charAt(i));
+			int p=alpha.indexOf(ch)+1;
+	
+			out=out+p+" ";
+		}
+		return out;
+	}
+	
+	public static void main(String[] args)throws IndexOutOfBoundsException{
+		Scanner s = new Scanner(System.in);
+		//System.out.println("Enter shift Integer ie KEY:\n");
+		//int r = s.nextInt();
+		System.out.println("Enter your msg \n");
+		String o=s.next();
+		Latin c=new Latin(o);
+		String out=c.encrypt();
+		System.out.println("\nEncrpted msg: "+out+"\n");//
+		
+		System.out.println("Decrypted msg: ");
+		String strArray[] = out.split(" ");
+		System.out.println("String converted to String array");
+	 	for(int i=0; i < strArray.length; i++)
+	 		System.out.println(strArray[i]);
+ 	 	int size=strArray.length;
+     	int [] arr = new int [size];
+      	for(int i=0; i<size; i++) {
+        	arr[i] = Integer.parseInt(strArray[i]);
+      	}
+      	System.out.println(Arrays.toString(arr));
+      	System.out.printf("Decrypted Code using Latin Alphabet\n");
+      	for(int i=0;i<arr.length;i++)
+      	{
+        	if(arr[i]!=-1)
+         	{
+          		System.out.printf("%c",arr[i]+'a'-1);   
+          	}
+        	else
+          	{
+            System.out.printf(" ");
+          	}
+        }
+        System.out.printf("\n");
+	}
+}
