@@ -1,0 +1,79 @@
+/*
+Develop a java application with Employee class with Emp_name, Emp_id,
+Address, Mail_id, Mobile_no as members. Inherit the classes, Programmer,
+Assistant Professor, Associate Professor and Professor from employee class.
+Add Basic Pay (BP) as the member of all the inherited classes with 97% of BP as
+DA, 10 % of BP as HRA, 12% of BP as PF, 0.1% of BP for staff club fund.
+Generate pay slips for the employees with their gross and net salary
+*/
+
+class emplye{
+	String name, id, address, mail;
+	int phone;
+	emplye(String name, String id, String address, String mail, int phone){
+		this.name=name;
+		this.id=id;
+		this.address=address;
+		this.mail=mail;
+		this.phone=phone;
+	}
+}
+class Assistantprof extends emplye{
+	int BP;
+	Assistantprof(String name, String id, String address, String mail, int phone,int BP){
+		super(name,id,address,mail,phone);
+		this.BP=BP;
+	}
+	void paySlip(){
+		float DA=BP*0.97f;
+		float HRA=BP*0.10f;
+		float PF=BP*0.12f;
+		float STF=BP*0.01f;
+		float GP=BP+DA+HRA;
+		float NP=GP-PF-STF;
+		System.out.println("Gross Salary: " +GP+"\nNet Salary: "+NP);
+	}
+}
+
+class Associateprof extends emplye{
+	int BP;
+	Associateprof(String name, String id, String address, String mail, int phone,int BP){
+		super(name,id,address,mail,phone);
+		this.BP=BP;
+	}
+	void paySlip(){
+		float DA=BP*0.97f;
+		float HRA=BP*0.10f;
+		float PF=BP*0.12f;
+		float STF=BP*0.01f;
+		float GP=BP+DA+HRA;
+		float NP=GP-PF-STF;
+		System.out.println("Gross Salary: " +GP+"\nNet Salary: "+NP);
+	}
+}
+class Professor extends emplye{
+	int BP;
+	Professor(String name, String id, String address, String mail, int phone,int BP){
+		super(name,id,address,mail,phone);
+		this.BP=BP;
+	}
+	void paySlip(){
+		float DA=BP*0.97f;
+		float HRA=BP*0.10f;
+		float PF=BP*0.12f;
+		float STF=BP*0.01f;
+		float GP=BP+DA+HRA;
+		float NP=GP-PF-STF;
+		System.out.println("Gross Salary: " +GP+"\nNet Salary: "+NP);
+	}
+}
+public class emplye_main{
+	public static void main(String[] args) {
+		Assistantprof a=new Assistantprof("Vik","1","rajula","klu.ac.in",9,60000);
+		Associateprof b=new Associateprof("Ram","2","india","india.ac.in",1,40000);
+		Professor c=new Professor("Sam","3","England","uk.ac.in",2323,10000);
+		a.paySlip();
+		b.paySlip();
+		c.paySlip();			
+	}
+}
