@@ -1,0 +1,46 @@
+/*Create a base class Shape with relevant data members and member functions to
+get data and print the area. Create two more classes Rectangle and Triangle
+which inherit Shape class. Test the classes in main method.*/
+
+abstract class Figure{
+	float dim1,dim2;
+	Figure(float d1,float d2){
+		dim1=d1;dim2=d2;
+	}
+	abstract double area();
+
+}
+	
+class Rectangle extends Figure{
+	Rectangle(float l , float b){
+		super(l,b);
+	}
+	double area(){
+			return dim1*dim2;
+		}
+}
+
+class Triangle extends Figure{
+	int angle;
+	Triangle(float l , float h){
+		super(l,h);
+	}
+	double area(){
+			return 0.5f*dim1*dim2;
+		}
+	}
+
+public class Figure_main{
+	public static void main(String[] args) {
+
+		Rectangle a=new Rectangle(4.5f,7.5f);
+		Triangle b=new Triangle(4.5f,6.0f);
+		Figure f;
+		f=a;
+		f=b;
+		System.out.println("Area of Triangle "+b.area());
+		System.out.println("Area of Rectangle "+a.area());
+
+			
+	}
+}
