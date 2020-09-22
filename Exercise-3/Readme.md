@@ -5,8 +5,7 @@
   DA, 10 % of BP as HRA, 12% of BP as PF, 0.1% of BP for staff club fund.
   Generate pay slips for the employees with their gross and net salary
   
-  2. Create a Circle class with following members.
-
+  2.Create a Circle class with following members.
   A data member that stores the radius of a circle
   A constructor function with an argument that initializes the radius
   A function that computes and returns are of a circle
