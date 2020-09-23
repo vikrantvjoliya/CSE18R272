@@ -1,0 +1,63 @@
+/*
+Create three classes Student, Test and Result classes. The student class
+contains student relevant information. Test class contains marks for five subjects.
+The result class contains Total and average of the marks obtained in five
+subjects. Inherit the properties of Student and Test class details in Result class
+through multilevel inheritances.
+*/
+class Student{
+	 	private int sno;
+        private String sname;
+        public void stud_info(int no,String name)
+        {
+                sno = no;
+                sname = name;
+        }
+        public void stud_out()
+        {
+                System.out.println("Student No : " + sno);
+                System.out.println("Student Name : " + sname);
+        }
+}
+
+class Test extends Student{
+	protected int m1,m2,m3,m4,m5;
+    public void set_marks(int a1,int a2,int a3, int a4, int a5)
+        {
+                m1=a1;
+                m2=a2;
+                m3=a3;
+                m4=a4;
+                m5=a5;
+        }
+        public void marks_out(){
+            System.out.println("Mark1 : " + m1);
+            System.out.println("Mark2 : " + m2);
+            System.out.println("Mark3 : " + m3);
+            System.out.println("Mark4 : " + m4);
+            System.out.println("Mark5 : " + m5);
+        }
+}
+class Result extends Test{
+
+        private int total;
+        private float avg;
+        public void calc(){
+        	total = m1+m2+m3+m4+m5;
+        	avg=total/5;
+        }
+        public void total_out(){
+        	System.out.println("Total : " + total);
+        	System.out.println("Average : " + avg);
+        }
+
+    public static void main(String args[]){
+            Result v = new Result();
+            v.stud_info(4368,"Vikrant");
+            v.set_marks(91,89,89,87,75);
+            v.calc();
+            v.stud_out();
+            v.marks_out();
+            v.total_out();
+        }
+}
