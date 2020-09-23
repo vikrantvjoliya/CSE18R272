@@ -31,3 +31,21 @@
   3.Create a base class Shape with relevant data members and member functions to
   get data and print the area. Create two more classes Rectangle and Triangle
   which inherit Shape class. Test the classes in main method.
+
+  4.Design a vehicle class that contains the following properties of motor vehicles:
+  Fuel tank capacity, average fuel consumption per 100 km and the distance a
+  vehicle can travel on a full tank. The vehicle class should be designed as a base
+  class from which the Car and Truck classes are derived. The derived classes
+  should have following member functions.
+   A function that contains data for a vehicle from the user
+   A function that computes and returns the distance a vehicle can travel on a
+  full tank.
+   A function that computes and returns how many times a vehicle has to be
+  refueled to travel a given distance.
+  Test the class in the main method.
+  
+  5.Create three classes Student, Test and Result classes. The student class
+  contains student relevant information. Test class contains marks for five subjects.
+  The result class contains Total and average of the marks obtained in five
+  subjects. Inherit the properties of Student and Test class details in Result class
+  through multilevel inheritances.
