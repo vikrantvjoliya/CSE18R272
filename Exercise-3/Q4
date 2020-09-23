@@ -1,0 +1,55 @@
+/*Design a vehicle class that contains the following properties of motor vehicles:
+Fuel tank capacity, average fuel consumption per 100 km and the distance a
+vehicle can travel on a full tank. The vehicle class should be designed as a base
+class from which the Car and Truck classes are derived. The derived classes
+should have following member functions.
+ A function that contains data for a vehicle from the user
+ A function that computes and returns the distance a vehicle can travel on a
+full tank.
+ A function that computes and returns how many times a vehicle has to be
+refueled to travel a given distance.
+Test the class in the main method.*/
+
+class Vehicle{
+    int capacity;
+    float consumption, distance;
+    Vehicle(int a,float b, float c){
+        capacity=a;
+        consumption=b;
+        distance=c;
+    }
+}
+class Car extends Vehicle{
+    Car(int a, float b, float c){
+        super(a,b,c);
+    }
+    float compute_dist(){
+        float d=capacity*consumption/100;
+    	return d;
+    }
+    float compute_fuel(int d){
+    	return (distance*100)/(consumption);
+    }
+}
+class Truck extends Vehicle{
+    Truck(int a, float b, float c){
+        super(a,b,c);
+    }
+    float compute_dist(){
+        float d=capacity*consumption/100;
+    	return d;
+    }
+    float compute_fuel(int d){
+    	return (distance*100)/(consumption);
+    }
+}
+
+public class Vehicle_main
+{
+	public static void main(String[] args) {
+	    Car c = new Car(25,15.0f,20.0f);
+	    System.out.println("Distance covered by Car: "+ c.compute_dist()+" km\n"+"Fuel Consumed by Car: "+c.compute_fuel(5)+" litres");
+		Truck t= new Truck(45,25.0f,40.0f);
+		System.out.println("\nDistance covered by Truck: "+ t.compute_dist()+" km\n"+"Fuel Consumed by Truck: "+t.compute_fuel(15)+" litres \n");
+	}
+}
