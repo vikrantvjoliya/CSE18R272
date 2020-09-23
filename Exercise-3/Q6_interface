@@ -1,0 +1,44 @@
+interface Shape{
+    double pi =3.14;
+    public double perimeter();
+    public double area();
+}
+
+class Circle implements Shape{
+    float radius;
+    Circle(float r){
+        radius = r;
+    }
+    public double area(){
+        return pi*radius*radius;
+    }
+    public double perimeter(){
+        return 2*pi*radius;
+    }
+}
+class Ecllipse implements Shape{
+    float a,b;
+    Ecllipse(float a,float b){
+        this.a = a;
+        this.b=b;
+    }
+    public double perimeter(){
+        return (2*pi*Math.sqrt(a*a+b*b));
+    }
+    public double area(){
+        return pi*a*b;
+    }
+}
+public class Shape_main
+{
+	public static void main(String[] args) {
+	    Circle c = new Circle(9.0f);
+	    Ecllipse e = new Ecllipse(7.0f,48.0f);
+	    System.out.println("area of circle  is "+ c.area());
+	    
+	    System.out.println("area of ellipse is "+ e.area()+"\n");
+	    
+	    System.out.println("perimeter of circle  is "+ c.perimeter());
+	    System.out.println("perimeter of ecclipse  is "+ e.perimeter());
+	}
+}
