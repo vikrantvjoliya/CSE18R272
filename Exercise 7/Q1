@@ -1,0 +1,31 @@
+/*
+1.Write a program that creates a user interface to perform integer divisions. The user
+enters two numbers Num1 and Num2. If Num1 or Num2 is not an integer, the
+program would throw NumberFormatException. If Num2 is Zero, the program would
+throw an ArithmeticException. Display the exception.
+*/
+import java.io.*;
+
+public class Q1 {
+    public static void main (String args[]) throws IOException {
+        String num1,num2;
+        int n1,n2,d;
+        BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
+        try{
+            num1 = br.readLine();
+            num2 = br.readLine();
+            n1 = Integer.parseInt(num1);
+            n2 = Integer.parseInt(num2);
+            d = n1/n2;
+            System.out.println(" Output " + d);
+        }
+        catch(NumberFormatException e)
+        {
+            System.out.println("Inputs are not valid");
+        }
+        catch(ArithmeticException ae)
+        {
+            System.out.println("Divide by zero error");
+        }
+    }
+}
