@@ -1,0 +1,71 @@
+/*2. Java programs to create an bank account with minimum balance, deposit amount,
+withdraw amount and throws LessBalanceException, create a
+LessBalanceException class which returns a statement says withdraw amount is
+not valid, creates 2 accounts and try to withdraw more money than account and
+see which type of exception occurs.
+*/
+class BalanceCheck extends Exception
+{
+    BalanceCheck()
+    {
+        super("Transaction failed less balance ");
+    }
+}
+
+class Account
+{
+    int accno;
+    String name;
+    double balance;
+    static int minimum=500;
+    Account(int ano,String n,double bal)
+    {
+        accno=ano;name=n;balance=bal;
+        
+    }
+    void withdrawl(int amt)throws BalanceCheck
+    {
+        if((balance-amt)>minimum)
+        {
+            balance-=amt;
+            System.out.println("transaction was succesfully done");
+        }
+        else
+        {
+            throw new BalanceCheck();
+        }
+    }
+    void deposit(int amt)
+    {
+        balance+=amt;
+    }
+    double checkBalance()
+    {
+        return balance;
+    }
+}
+
+public class Q2 {
+    public static void main(String args[]) {
+        Account a1=new Account(1,"Helios ",60000);
+        Account a2=new Account(2,"Preadotor ",70000);
+        try
+        {
+            a1.withdrawl(14000);
+            a2.withdrawl(10000);
+        }
+        catch(BalanceCheck b)
+        {
+            System.out.println(b);
+        }
+        
+        System.out.println("a1 balance ="+a1.checkBalance());
+        System.out.println("a2 balance ="+a2.checkBalance());
+        a1.deposit(9000);a2.deposit(9000);
+        
+        System.out.println("a1 balance ="+a1.checkBalance());
+        System.out.println("a2 balance ="+a2.checkBalance());
+        
+      
+    }
+}
