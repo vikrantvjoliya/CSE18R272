@@ -1,0 +1,98 @@
+/*
+4. Design a Java interface for ADT Stack. Implement this interface using array.
+Provide necessary exception handling in both the implementations.?
+*/
+class FullStack extends Exception
+{
+    FullStack()
+    {
+        super("Stack is Full");
+    }
+}
+
+class EmptyStack extends Exception
+{
+   EmptyStack()
+    {
+        super("Stack is Empty ");
+    }
+}
+
+class Stack
+{
+    int top;
+    int arr[];
+    static int max=10;
+    
+    Stack()
+    {
+        top=-1;
+        arr=new int[max];
+    }
+    
+    void push(int x)throws FullStack
+    {
+        if(top==max-1)
+        {
+            throw new FullStack();
+        }
+        else
+        {
+            arr[++top]=x;
+        }
+    }
+    
+    int pop()throws EmptyStack
+    {
+        if(top==-1)
+        {
+            throw new EmptyStack();
+        }
+        else
+        {
+            return(arr[top--]);
+        }
+    }
+    void print()
+    {
+        for(int i=0;i<arr.length;i++)
+          System.out.print(arr[i]+"  ");
+         System.out.println();
+    }
+}
+
+public class Q4 {
+    public static void main(String args[]) {
+      Stack s1=new Stack();int x;
+      
+      for(int i=1;i<=12;i++)
+      {
+          try{
+              s1.push(i);
+               s1.print();
+          }
+          catch(FullStack fs)
+          {
+              System.out.println(fs);
+          }
+         
+       
+      }
+      
+      for (int i=1;i<=12;i++)
+      {
+          try
+          {
+              x=s1.pop();
+               System.out.print(x +" ");
+              
+          }
+          catch(EmptyStack es)
+          {
+              System.out.println(es);
+          }
+      }
+        
+      
+    }
+}
