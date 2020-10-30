@@ -1,0 +1,44 @@
+/*
+3. Write a Java program to check whether the age entered is a valid number by?
+*/
+import java.util.Scanner;
+
+class AgeCheck extends Exception
+{
+    AgeCheck()
+    {
+        super("Exception : invalid Age");
+    }
+}
+
+
+
+public class Q3{
+    public static void main(String args[])  {
+        int age;
+        Scanner s = new Scanner(System.in);
+        age = s.nextInt();
+        
+         boolean b;
+         try{
+             b= CheckAge (age);
+             System.out.println("valid");
+         }
+         catch (AgeCheck ag)
+         {
+             System.out.println(ag);
+         }
+         
+         
+    }
+    
+    static boolean CheckAge(int age) throws AgeCheck 
+    {
+        if(age > 0 && age<=120)
+          return true;
+         else
+         {
+             throw new AgeCheck();
+         }
+    }
+}
